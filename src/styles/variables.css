@@ -1,0 +1,157 @@
+/* CSS Custom Properties - Design Tokens v2 (Modern Identity) */
+:root {
+  /* Colors - Dark Theme (Default) */
+  --color-bg-dark: #0b0116;           /* near-black plum */
+  --color-bg-darker: #05010d;         /* deeper */
+  --color-bg-card: rgba(192, 38, 211, 0.04);  /* magenta-tinted glass */
+  --color-bg-card-hover: rgba(192, 38, 211, 0.08);
+
+  --color-text-main: #fdf4ff;         /* warm white */
+  --color-text-muted: #a8a3b8;        /* muted lavender-grey */
+  --color-text-dim: #7c748c;          /* dim lavender-grey */
+
+  /* Brand Colors - Indigo → Magenta Duotone (high contrast) */
+  --color-primary: #2e1065;           /* violet-950 */
+  --color-primary-mid: #581c87;       /* indigo-900 */
+  --color-primary-light: #d946ef;     /* fuchsia-500 */
+  --color-primary-lighter: #f5d0fe;   /* fuchsia-200 */
+  --color-primary-glow: rgba(46, 16, 101, 0.5);
+  --color-primary-glow-strong: rgba(217, 70, 239, 0.55);
+
+  /* Accent: warm coral for CTAs/highlights (reserved, currently unused) */
+  --color-accent: #f97316;            /* orange-500 */
+  --color-accent-light: #fb923c;      /* orange-400 */
+  --color-accent-glow: rgba(249, 115, 22, 0.4);
+
+  /* Glassmorphism v2 — Layered */
+  --glass-bg: rgba(192, 38, 211, 0.05);
+  --glass-bg-strong: rgba(192, 38, 211, 0.1);
+  --glass-border: rgba(192, 38, 211, 0.18);
+  --glass-border-strong: rgba(192, 38, 211, 0.35);
+  --glass-highlight: rgba(255, 255, 255, 0.06);
+  --glass-highlight-strong: rgba(255, 255, 255, 0.12);
+  --glass-backdrop: blur(20px);
+  --glass-backdrop-nav: blur(16px);
+
+  /* Semantic Colors */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #0ea5e9;
+
+  /* Typography — Space Grotesk for display, Inter for UI */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  --font-size-6xl: 3.75rem;
+
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  --line-height-tight: 1.1;
+  --line-height-normal: 1.6;
+  --line-height-relaxed: 1.75;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+  --radius-2xl: 28px;
+  --radius-full: 9999px;
+
+  /* Shadows — softer, colored */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px -2px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 12px 24px -4px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 24px 48px -8px rgba(0, 0, 0, 0.45);
+  --shadow-glow: 0 0 40px var(--color-primary-glow);
+  --shadow-glow-strong: 0 0 80px var(--color-primary-glow-strong);
+  --shadow-accent: 0 0 30px var(--color-accent-glow);
+
+  /* Transitions — springy */
+  --transition-fast: 120ms cubic-bezier(0.25, 0.8, 0.25, 1);
+  --transition-base: 250ms cubic-bezier(0.25, 0.8, 0.25, 1);
+  --transition-slow: 450ms cubic-bezier(0.25, 0.8, 0.25, 1);
+  --transition-bounce: 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Z-Index */
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal-backdrop: 400;
+  --z-modal: 500;
+  --z-popover: 600;
+  --z-tooltip: 700;
+
+  /* Layout */
+  --container-max: 1180px;
+  --header-height: 72px;
+
+  /* Breakpoints */
+  --bp-sm: 600px;
+  --bp-md: 900px;
+  --bp-lg: 1200px;
+
+  /* Mesh Gradient Stops (for background) */
+  --mesh-stop-1: #2e1065;
+  --mesh-stop-2: #701a75;
+  --mesh-stop-3: #d946ef;
+  --mesh-stop-4: #2e1065;
+}
+
+/* Light Theme */
+[data-theme="light"] {
+  --color-bg-dark: #faf5ff;
+  --color-bg-darker: #f3e8ff;
+  --color-bg-card: rgba(192, 38, 211, 0.06);
+  --color-bg-card-hover: rgba(192, 38, 211, 0.12);
+
+  --color-text-main: #1e1b2e;
+  --color-text-muted: #5b5470;
+  --color-text-dim: #7c748c;
+
+  --glass-bg: rgba(192, 38, 211, 0.08);
+  --glass-bg-strong: rgba(192, 38, 211, 0.15);
+  --glass-border: rgba(192, 38, 211, 0.2);
+  --glass-border-strong: rgba(192, 38, 211, 0.35);
+  --glass-highlight: rgba(0, 0, 0, 0.04);
+  --glass-highlight-strong: rgba(0, 0, 0, 0.08);
+
+  --color-primary-glow: rgba(46, 16, 101, 0.28);
+  --color-primary-glow-strong: rgba(217, 70, 239, 0.4);
+  --color-accent-glow: rgba(249, 115, 22, 0.25);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px -2px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 12px 24px -4px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 24px 48px -8px rgba(0, 0, 0, 0.12);
+}
