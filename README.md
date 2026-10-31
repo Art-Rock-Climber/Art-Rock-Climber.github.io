@@ -21,15 +21,23 @@
 - **CSS Custom Properties** — дизайн-токены в `src/styles/variables.css`
 - **Vanilla TypeScript components** — инициализация интерактивных блоков без UI-фреймворка
 - **Font Awesome** — иконки навыков, контактов и проектов
+- **Python (Pillow)** — автоматическая оптимизация изображений (WebP-генерация, квантование палитры)
 - **GitHub Actions** — автоматический деплой на Pages
 
 ## Использованные приёмы
 
+- **Оптимизация производительности и Core Web Vitals (LCP, CLS)**:
+  - **WebP и адаптивный `<picture>`**: выдача сжатого WebP для современных браузеров с PNG-fallback (сокращение веса главного фото с 2.08 МБ до 25.7 КБ, **−98.8%**).
+  - **Разделение контекстов графики**: отдельный thumbnail (80×80 WebP, ~1.2 КБ) для аватара в шапке вместо масштабирования полноразмерного hero-фото.
+  - **Предотвращение сдвигов макета (CLS)**: явные атрибуты `width` и `height` на всех изображениях.
+  - **Сжатие PWA-иконок и favicons**: квантование адаптивной 256-цветной палитрой (иконка 512×512 уменьшена с 500 КБ до 54 КБ, **−89%**).
+  - **Ранний `preconnect`**: к `cdnjs.cloudflare.com` и `fonts.gstatic.com` для заблаговременного DNS/TLS-рукопожатия.
+  - **Шрифтовой тримминг**: подключение только используемых начертаний Google Fonts (Inter и Space Grotesk) вместо избыточных 10 весов.
 - **Блокирующая загрузка CSS из `<head>`** — `variables.css` и `main.scss` подключены напрямую в HTML, чтобы страница не мигала без оформления до запуска JS.
 - **MPA-навигация** — отдельные HTML-страницы `index`, `csharp`, `analyst` с общим TypeScript-entrypoint.
 - **i18n RU/EN** — словари `src/i18n/ru.ts` и `src/i18n/en.ts`, переключатель языка и обновление SEO/контента.
 - **SEO и social preview** — canonical, meta description/keywords, Open Graph, Twitter Card, sitemap и robots.
-- **PWA-база** — manifest, favicon-набор, service worker и theme color.
+- **PWA-база** — manifest, favicon-набор, service worker (кэширование HTML и ассетов, версионирование `v4`) и theme color.
 - **Доступность** — skip-link, `aria-label`, `aria-pressed`, `aria-current`, `:focus-visible`, поддержка `prefers-reduced-motion`.
 - **Приватная аналитика по согласию** — cookie-баннер и отложенная загрузка Яндекс.Метрики.
 - **Reveal on scroll** — IntersectionObserver-анимации для карточек и секций.
@@ -45,6 +53,7 @@
 ├─ analyst.html             (страница аналитика данных)
 ├─ src/
 │  ├─ main.ts               (основной TypeScript-модуль)
+│  ├─ assets/               (исходники фото и графики в полном разрешении)
 │  ├─ styles/
 │  │  ├─ variables.css      (CSS-переменные, темы)
 │  │  └─ main.scss          (глобальные стили)
@@ -53,12 +62,13 @@
 │  ├─ utils/                (observer.ts, i18n.ts)
 │  └─ types/                (i18n.d.ts)
 ├─ public/                  (manifest.json, robots.txt, sitemap.xml, sw.js, favicon/, assets/og-image.png, privacy.html)
-├─ scripts/                 (generate-favicons.ps1, generate-favicon-from-photo.ps1, create-favicon-ico.ps1, generate-og-image.ps1)
+├─ scripts/                 (optimize-images.py, generate-favicons.ps1, generate-favicon-from-photo.ps1, create-favicon-ico.ps1, generate-og-image.ps1)
 └─ .github/workflows/deploy.yml
 ```
 
 **Дизайн** — собственная идентичность v2: дуотон индиго → маджента (`--color-primary-mid` → `--color-primary-light`), mesh-градиент со сеткой, слоистое стекло, заголовки Space Grotesk, приподнятые карточки с градиентной кромкой. Токены — в `src/styles/variables.css`, компоненты — в `src/styles/main.scss`.
 
+**Оптимизация изображений** — `npm run optimize:images` (или `python scripts/optimize-images.py`): генерирует WebP и сжатые PNG для hero и аватара из `src/assets/resume_photo_original.png`, а также сжимает favicons и OG-картинку.
 **Favicon** — можно при необходимости перегенерировать: `powershell -ExecutionPolicy Bypass -File scripts\generate-favicons.ps1`.
 **OG-картинка** (1200×630 для превью в соцсетях) — можно заменить `public/assets/og-image.png` своей или перегенерировать: `powershell -ExecutionPolicy Bypass -File scripts\generate-og-image.ps1` (тексты и цвета — в самом скрипте).
 **Яндекс.Метрика** — счётчик `113568266` задан в `src/components/CookieBanner.ts` (константа `YANDEX_METRIKA_ID`)

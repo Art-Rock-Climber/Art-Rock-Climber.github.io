@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -37,7 +37,8 @@
   <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="stylesheet" href="/src/styles/variables.css">
   <link rel="stylesheet" href="/src/styles/main.scss">
@@ -54,7 +55,10 @@
     <div class="nav-container">
       <div class="logo-area">
         <div class="logo-avatar" aria-hidden="true">
-          <img src="/favicon/my_photo/resume_photo.png" alt="" loading="eager">
+          <picture>
+            <source srcset="/favicon/my_photo/avatar.webp" type="image/webp">
+            <img src="/favicon/my_photo/avatar.png" alt="" width="40" height="40" loading="eager">
+          </picture>
         </div>
         <span class="nav-title" data-i18n="nav_brand">Bannikov Vladislav</span>
       </div>
@@ -84,7 +88,10 @@
     <section class="hero" id="home" aria-labelledby="hero-title">
       <div class="hero-visual">
         <div class="hero-photo glass-card" aria-hidden="true">
-          <img src="/favicon/my_photo/resume_photo.png" alt="Банников Владислав" loading="eager">
+          <picture>
+            <source srcset="/favicon/my_photo/resume_photo.webp" type="image/webp">
+            <img src="/favicon/my_photo/resume_photo.png" alt="Банников Владислав" width="280" height="280" loading="eager">
+          </picture>
         </div>
       </div>
       <div class="hero-content">

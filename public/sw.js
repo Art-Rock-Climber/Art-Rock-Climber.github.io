@@ -1,12 +1,14 @@
 // Basic service worker (PWA)
 // - Navigation (HTML): network-first with cache fallback → always fresh pages
 // - Other same-origin assets: cache-first with background revalidation
-const CACHE = 'resume-portfolio-v3';
+const CACHE = 'resume-portfolio-v4';
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();
   event.waitUntil(
-    caches.open(CACHE).then((cache) => cache.addAll(['/', '/index.html', '/manifest.json']))
+    caches.open(CACHE).then((cache) =>
+      cache.addAll(['/', '/index.html', '/csharp.html', '/analyst.html', '/manifest.json'])
+    )
   );
 });
 
